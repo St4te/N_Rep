@@ -24,10 +24,11 @@ class MyWidget(QMainWindow):
     def paintEvent(self, event):
         if self.do_paint:
             self.painter = QPainter()
+            self.rad = random.randrange(1000)
             self.painter.begin(self)
             self.painter.setBrush(self.color)
             self.painter.setPen(self.color)
-            self.painter.drawEllipse(0, 0, random.randrange(1000), random.randrange(1000))
+            self.painter.drawEllipse(0, 0, self.rad, self.rad)
             self.painter.end()
         self.do_paint = False
 
