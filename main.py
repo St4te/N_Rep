@@ -1,18 +1,18 @@
 import sys
 import random
 
-from PyQt6 import uic
+from UI import Ui_MainWindow
 from PyQt6.QtGui import QPainter, QColor
 from PyQt6.QtWidgets import QApplication, QMainWindow
 
 
-class MyWidget(QMainWindow):
+class MyWidget(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+
+        self.setupUi(self)
 
         self.pushButton.clicked.connect(self.paint)
-        self.color = QColor(255, 255, 0)
         self.do_paint = False
         self.painter = QPainter()
 
@@ -23,6 +23,7 @@ class MyWidget(QMainWindow):
 
     def paintEvent(self, event):
         if self.do_paint:
+            self.color = QColor(random.randrange(256), random.randrange(256), random.randrange(256))
             self.rad = random.randrange(1000)
             self.painter = QPainter()
             self.painter.begin(self)
