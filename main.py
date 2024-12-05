@@ -23,8 +23,8 @@ class MyWidget(QMainWindow):
 
     def paintEvent(self, event):
         if self.do_paint:
-            self.painter = QPainter()
             self.rad = random.randrange(1000)
+            self.painter = QPainter()
             self.painter.begin(self)
             self.painter.setBrush(self.color)
             self.painter.setPen(self.color)
